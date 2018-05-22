@@ -9,8 +9,6 @@ node {
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
-        echo $UID
-        usermod -a -G staff jenkins
     }
 
     stage('Checkout') {
