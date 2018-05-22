@@ -1,9 +1,9 @@
 # Base Alpine Linux based image with OpenJDK JRE only
 FROM openjdk:8-jre-alpine
+FROM maven:3-alpine
+COPY pom.xml pipeline/
 
-COPY /Users/vish/IdeaProjects/test-ci/pom.xml pipeline/
-
-COPY /Users/vish/IdeaProjects/test-ci/src pipeline/src
+COPY src pipeline/src
 
 WORKDIR pipeline/
 
