@@ -9,6 +9,8 @@ node {
         def dockerHome = tool 'myDocker'
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
+
+        usermod -a -G docker jenkins
     }
 
     stage('Checkout') {
@@ -41,8 +43,8 @@ node {
 
 def imagePrune(containerName){
     try {
-        sh "sudo docker image prune -f"
-        sh "sudo docker stop $containerName"
+        sh "docker image prune -f"
+        sh "docker stop $containerName"
     } catch(error){}
 }
 
