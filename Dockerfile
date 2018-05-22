@@ -8,8 +8,10 @@ COPY src pipeline/src
 WORKDIR pipeline/
 
 RUN mvn clean install
+RUN --group-add docker
 
+ENTRYPOINT [ "java", "-jar", "/pipeline/target/test.jar"]
 # copy application JAR (with libraries inside)
-COPY target/*.jar /app.jar
+#COPY target/*.jar /app.jar
 # specify default command
-CMD ["java", "-jar", "/app.jar"]
+#CMD ["java", "-jar", "/app.jar"]
