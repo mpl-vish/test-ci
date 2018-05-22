@@ -10,7 +10,7 @@ node {
         def mavenHome  = tool 'myMaven'
         env.PATH = "${dockerHome}/bin:${mavenHome}/bin:${env.PATH}"
 
-        usermod -a -G docker jenkins
+        sh "usermod -a -G docker jenkins"
     }
 
     stage('Checkout') {
